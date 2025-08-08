@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Cross-Selling PoC — Home Appliances</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/static/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="header">
+    <h1>Cross-Selling 📈 — Home Appliances</h1>
+    <p class="subtitle">Pick a customer → see latest purchase → get AI suggestions.</p>
+  </header>
+<main>
+  <section class="card">
+    <label for="customerSelect">Customer</label>
+    <select id="customerSelect">
+      <option value="">Select a customer...</option>
+    </select>
+    <div id="customerDetails" class="meta" style="margin-top:8px;"></div>
+  </section>
+
+  <section class="card">
+    <h2>Previous Invoices</h2>
+    <div id="invoicesGrid" class="cols"></div>
+  </section>
+  
+  <section class="card">
+    <h2>Add to Invoice</h2>
+    <div class="meta">Select up to 3 products the customer is currently purchasing.</div>
+    <div id="invoicePicker" class="invoice-grid"></div>
+    <div id="invoiceMeta" class="meta" style="margin-top:8px;">0 / 3 selected</div>
+    <button id="suggestBtn">Get Suggestions</button>
+  </section>
+  
+  <section class="card">
+    <h2>Suggested Add-Ons</h2>
+    <div id="suggestionsGrid" class="cols"></div>
+  </section>
+  
+  <section class="card">
+    <h2>Additional Product Recommendations</h2>
+    <div id="additionalGrid" class="cols"></div>
+  </section>
+  
+  <section class="card">
+    <h2>Customer History</h2>
+    <div id="history"></div>
+  </section>
+</main>
+
+  <footer class="footer">
+    <small>Demo only. Synthetic data. Not for production use.</small>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
