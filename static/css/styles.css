@@ -1,125 +1,555 @@
+/* Import Nunito Sans from Google Fonts - Avenir alternative */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 :root {
-    --bg: #0f172a;
-    --card: #111827;
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #22c55e;
-    --warn: #f59e0b;
+    /* Lowe's inspired color palette */
+    --lowes-blue: #004990;
+    --lowes-light-blue: #0073B7;
+    --lowes-bg: #ffffff;
+    --lowes-light-gray: #f8f9fa;
+    --lowes-gray: #6c757d;
+    --lowes-dark-gray: #495057;
+    --lowes-border: #dee2e6;
+    --lowes-hover: #0056b3;
+    --lowes-accent: #007bff;
+    --lowes-success: #28a745;
+    --lowes-green: #007935;
+    --lowes-warning: #ffc107;
+    --lowes-text: #212529;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.15);
   }
   
-  * { box-sizing: border-box; }
+  * { 
+    box-sizing: border-box; 
+  }
   
   body {
     margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-    background: linear-gradient(180deg, #0b1022, #0f172a 30%, #0f172a);
-    color: var(--ink);
+    font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--lowes-bg);
+    color: var(--lowes-text);
+    line-height: 1.5;
+    font-size: 14px;
+    min-height: 100vh;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
-  .header, .footer {
-    text-align: center;
-    padding: 16px;
+  /* Header Styling */
+  .header {
+    background: var(--lowes-blue);
+    color: white;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+  }
+  
+  .logo-icon {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-icon svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  
+  .brand-text h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  
+  .brand-text .tagline {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.85;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  
+  .page-title {
+    text-align: right;
+    flex-grow: 1;
+  }
+  
+  .page-title h2 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
   }
   
   .subtitle {
-    color: var(--muted);
-    margin-top: 4px;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.3;
   }
   
-  .container {
-    max-width: 960px;
+  /* Main Content Container */
+  main {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 20px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
   
+  /* Card Styling - Lowe's style containers */
   .card {
-    background: var(--card);
-    border: 1px solid #1f2937;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    background: rgb(244, 246, 250);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 24px;
+    box-shadow: none;
+    transition: none;
   }
   
-  label { display:block; margin-bottom:8px; color: var(--muted); }
+  .card:hover {
+    box-shadow: none;
+  }
+  
+  .card h2 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--lowes-blue);
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  /* Form Elements */
+  .form-container {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 16px;
+  }
+  
+  .button-container {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  label { 
+    display: block; 
+    margin-bottom: 8px; 
+    color: var(--lowes-dark-gray);
+    font-weight: 600;
+    font-size: 14px;
+  }
   
   select, button {
-    background: #0b1022;
-    color: var(--ink);
-    border: 1px solid #263042;
-    border-radius: 10px;
-    padding: 10px 12px;
+    background: white;
+    color: var(--lowes-text);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  select {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: var(--lowes-blue);
+    box-shadow: 0 0 0 3px rgba(0, 73, 144, 0.1), 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  button {
+    background: var(--lowes-blue);
+    color: white;
+    border-color: var(--lowes-blue);
+    cursor: pointer;
+    font-weight: 600;
     margin-right: 8px;
   }
   
-  button:hover { border-color: var(--accent); cursor: pointer; }
+  button:hover {
+    background: var(--lowes-hover);
+    border-color: var(--lowes-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
   
+  /* Lowe's Green Button for Primary Actions */
+  #suggestBtn {
+    background: var(--lowes-green);
+    border-color: var(--lowes-green);
+    font-size: 16px;
+    padding: 14px 24px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+  
+  #suggestBtn:hover {
+    background: #006428;
+    border-color: #006428;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,121,53,0.3);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Pill/Badge Elements */
   .pill {
     display: inline-block;
-    background: #0b1022;
-    border: 1px solid #263042;
-    border-radius: 999px;
-    padding: 8px 12px;
+    background: var(--lowes-light-blue);
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px;
     margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
   }
   
+  /* Suggestion Items */
   .suggestion {
-    border: 1px solid #263042;
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 10px;
-    background: #0b1022;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: white;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   
-  .row { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-  .meta { color: var(--muted); font-size: 0.9rem; }
+  .suggestion:hover {
+    border-color: var(--lowes-light-blue);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
   
+  .row { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 8px; 
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .meta { 
+    color: var(--lowes-gray); 
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  /* Progress Bars */
   .bar {
-    height: 10px;
-    border-radius: 6px;
-    background: #1f2937;
-    margin-top: 6px;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--lowes-border);
+    margin-top: 8px;
     overflow: hidden;
   }
+  
   .bar > div {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), #16a34a);
+    background: linear-gradient(90deg, var(--lowes-light-blue), var(--lowes-blue));
     width: 0%;
-    transition: width 300ms ease;
+    transition: width 400ms ease;
+    border-radius: 4px;
   }
   
-  .kicker { color: var(--warn); font-size: 0.9rem; }
+  .kicker { 
+    color: var(--lowes-gray); 
+    font-size: 13px;
+    margin-top: 6px;
+  }
   
 
+  /* Grid Layouts */
   .invoice-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
   }
   
   .invoice-item {
-    background: #0b1022;
-    border: 1px solid #263042;
-    border-radius: 10px;
-    padding: 10px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  .invoice-item:hover {
+    border-color: var(--lowes-light-blue);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .invoice-item input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+    accent-color: var(--lowes-blue);
+  }
+  
+  .invoice-item label {
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
   }
   
   .cols {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
   }
   
   .col {
-    background: #0b1022;
-    border: 1px solid #263042;
-    border-radius: 12px;
-    padding: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   
   .col h3 {
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--lowes-blue);
+    font-weight: 600;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--lowes-light-gray);
+    border-top: 1px solid var(--lowes-border);
+    margin-top: 40px;
+  }
+  
+  .footer small {
+    color: var(--lowes-gray);
+    font-size: 12px;
+  }
+  
+  /* Customer Details Styling */
+  #customerDetails {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 16px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 12px;
+  }
+  
+  #customerDetails strong {
+    color: var(--lowes-blue);
+    font-size: 16px;
+  }
+  
+  /* Invoice Meta */
+  #invoiceMeta {
+    font-weight: 500;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 12px;
+  }
+  
+  /* History List */
+  #history {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 8px;
+  }
+  
+  #history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #history li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  
+  #history li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Responsive Design - iPad and Mobile */
+  
+  /* iPad Portrait (768px) and up to Desktop */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+    }
+    
+    .header {
+      padding: 24px;
+    }
+    
+    .header-container {
+      gap: 30px;
+    }
+    
+    .brand-text h1 {
+      font-size: 28px;
+    }
+    
+    .page-title h2 {
+      font-size: 20px;
+    }
+    
+    .subtitle {
+      font-size: 13px;
+    }
+    
+    main {
+      padding: 24px;
+      gap: 24px;
+    }
+    
+    .card {
+      padding: 24px;
+    }
+    
+    .cols {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .invoice-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+  
+  /* Mobile Devices (up to 767px) */
+  @media (max-width: 767px) {
+    body {
+      font-size: 14px;
+    }
+    
+    .header {
+      padding: 16px;
+    }
+    
+    .header-container {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+    
+    .logo {
+      gap: 12px;
+    }
+    
+    .brand-text h1 {
+      font-size: 26px;
+    }
+    
+    .page-title {
+      text-align: center;
+    }
+    
+    .page-title h2 {
+      font-size: 18px;
+    }
+    
+    .subtitle {
+      font-size: 13px;
+    }
+    
+    main {
+      padding: 16px;
+      gap: 16px;
+    }
+    
+    .card {
+      padding: 16px;
+    }
+    
+    .cols {
+      grid-template-columns: 1fr;
+    }
+    
+    .invoice-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .row {
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    select {
+      max-width: 100%;
+    }
+    
+    button {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+  }
+  
+  /* Large Desktop (1200px+) */
+  @media (min-width: 1200px) {
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      grid-template-areas: 
+        "customer customer"
+        "invoices invoices"
+        "picker picker"
+        "suggestions additional"
+        "history history";
+    }
+    
+    .card:nth-child(1) { grid-area: customer; }
+    .card:nth-child(2) { grid-area: invoices; }
+    .card:nth-child(3) { grid-area: picker; }
+    .card:nth-child(4) { grid-area: suggestions; }
+    .card:nth-child(5) { grid-area: additional; }
+    .card:nth-child(6) { grid-area: history; }
   }
