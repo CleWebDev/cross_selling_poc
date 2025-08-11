@@ -2,22 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Cross-Selling PoC — Home Appliances</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HomeFlow Pro - Customer Recommendation Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link href="/static/css/styles.css" rel="stylesheet" />
 </head>
 <body>
   <header class="header">
-    <h1>Cross-Selling 📈 — Home Appliances</h1>
-    <p class="subtitle">Pick a customer → see latest purchase → get AI suggestions.</p>
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="45" height="45" viewBox="0 0 40 40" fill="none">
+            <path d="M5 20L20 8L35 20V34C35 35.1 34.1 36 33 36H25V26H15V36H7C5.9 36 5 35.1 5 34V20Z" fill="white"/>
+            <path d="M15 36V26H25V36" fill="#0073B7"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>HomeFlow Pro</h1>
+          <p class="tagline">Smart Cross-Selling Solutions</p>
+        </div>
+      </div>
+      <div class="page-title">
+        <h2>Customer Recommendation Engine</h2>
+        <p class="subtitle">Analyze purchase history and discover intelligent product suggestions</p>
+      </div>
+    </div>
   </header>
 <main>
   <section class="card">
-    <label for="customerSelect">Customer</label>
-    <select id="customerSelect">
-      <option value="">Select a customer...</option>
-    </select>
-    <div id="customerDetails" class="meta" style="margin-top:8px;"></div>
+    <h2>Customer Selection</h2>
+    <div class="form-container">
+      <label for="customerSelect">Customer</label>
+      <select id="customerSelect">
+        <option value="">Select a customer...</option>
+      </select>
+    </div>
+    <div id="customerDetails" class="meta"></div>
   </section>
 
   <section class="card">
@@ -29,8 +48,10 @@
     <h2>Add to Invoice</h2>
     <div class="meta">Select up to 3 products the customer is currently purchasing.</div>
     <div id="invoicePicker" class="invoice-grid"></div>
-    <div id="invoiceMeta" class="meta" style="margin-top:8px;">0 / 3 selected</div>
-    <button id="suggestBtn">Get Suggestions</button>
+    <div id="invoiceMeta" class="meta">0 / 3 selected</div>
+    <div class="button-container">
+      <button id="suggestBtn">Get Suggestions</button>
+    </div>
   </section>
   
   <section class="card">
@@ -50,7 +71,7 @@
 </main>
 
   <footer class="footer">
-    <small>Demo only. Synthetic data. Not for production use.</small>
+    <small>© 2024 HomeFlow Pro. Demonstration platform with synthetic data. Not for production use.</small>
   </footer>
 
   <script src="/static/js/app.js"></script>
