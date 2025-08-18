@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template, request
 from recommend import suggest_for_item, recent_purchase_for_customer, list_customers
 import pandas as pd
 from pathlib import Path
+from openai_service import openai_service
 
 app = Flask(__name__)
 
@@ -86,6 +87,96 @@ def api_additional_recs():
     from recommend import additional_recommendations
     recs = additional_recommendations(cid, top_k=8)
     return jsonify({"customer_id": cid, "suggestions": recs})
+
+@app.route("/api/customer_insights")
+def api_customer_insights():
+    """Generate AI-powered customer insights."""
+    customer_id = request.args.get("customer_id")
+    if not customer_id:
+        return jsonify({"error": "customer_id is required"}), 400
+    
+    try:
+        # Get customer data
+        data_dir = Path(__file__).parent / "data"
+        customers_df = pd.read_csv(data_dir / "customers.csv")
+        customer_row = customers_df[customers_df["customer_id"] == customer_id]
+        
+        if customer_row.empty:
+            return jsonify({"error": "Customer not found"}), 404
+            
+        customer_data = customer_row.iloc[0].to_dict()
+        
+        # Get purchase history
+        purchases_df = pd.read_csv(data_dir / "purchases.csv")
+        purchase_history = purchases_df[purchases_df["customer_id"] == customer_id].sort_values("date").to_dict(orient="records")
+        
+        # Get recent invoices
+        invoices_df = pd.read_csv(data_dir / "invoices.csv")
+        items_df = pd.read_csv(data_dir / "invoice_items.csv")
+        recent_invoices_df = invoices_df[invoices_df["customer_id"] == customer_id].sort_values("date", ascending=False).head(2)
+        
+        recent_invoices = []
+        for _, inv in recent_invoices_df.iterrows():
+            items = items_df[items_df["invoice_id"] == inv["invoice_id"]]["item"].tolist()
+            recent_invoices.append({
+                "date": inv["date"],
+                "items": items,
+                "total": inv["total"]
+            })
+        
+        # Generate insights using OpenAI
+        insights = openai_service.generate_customer_insights(customer_data, purchase_history, recent_invoices)
+        return jsonify(insights)
+        
+    except Exception as e:
+        return jsonify({"error": f"Failed to generate insights: {str(e)}"}), 500
+
+@app.route("/api/recommendation_explanation")
+def api_recommendation_explanation():
+    """Generate AI explanation for product recommendations."""
+    selected_products = request.args.getlist("products")
+    
+    if not selected_products:
+        return jsonify({"error": "At least one product is required"}), 400
+    
+    try:
+        # Get recommendations for the selected products
+        all_recommendations = []
+        for product in selected_products:
+            recs = suggest_for_item(product, top_k=3)
+            if recs:
+                all_recommendations.extend(recs)
+        
+        # Remove duplicates and sort by score
+        seen = set()
+        unique_recs = []
+        for rec in all_recommendations:
+            if rec['item'] not in seen:
+                seen.add(rec['item'])
+                unique_recs.append(rec)
+        
+        unique_recs.sort(key=lambda x: x.get('score', 0), reverse=True)
+        top_recs = unique_recs[:5]
+        
+        # Generate explanation using OpenAI
+        explanation = openai_service.generate_product_recommendations_explanation(selected_products, top_recs)
+        
+        return jsonify({
+            "selected_products": selected_products,
+            "recommendations": top_recs,
+            **explanation
+        })
+        
+    except Exception as e:
+        return jsonify({"error": f"Failed to generate explanation: {str(e)}"}), 500
+
+@app.route("/api/openai_status")
+def api_openai_status():
+    """Check if OpenAI service is available."""
+    return jsonify({
+        "available": openai_service.is_available(),
+        "model": openai_service.model if openai_service.is_available() else None
+    })
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "5000"))

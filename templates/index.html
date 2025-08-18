@@ -30,33 +30,93 @@
 <main>
   <section class="card">
     <h2>Customer Selection</h2>
-    <div class="form-container">
-      <label for="customerSelect">Customer</label>
-      <select id="customerSelect">
-        <option value="">Select a customer...</option>
-      </select>
+    <div class="customer-row">
+      <div class="customer-select-container">
+        <label for="customerSelect">Customer</label>
+        <select id="customerSelect">
+          <option value="">Select a customer...</option>
+        </select>
+      </div>
+      <div id="customerDetails" class="customer-details-container"></div>
     </div>
-    <div id="customerDetails" class="meta"></div>
   </section>
 
   <section class="card">
-    <h2>Previous Invoices</h2>
-    <div id="invoicesGrid" class="cols"></div>
+    <h2>Customer Overview</h2>
+    <div class="three-column-row">
+      <div class="invoice-column">
+        <h3>Recent Invoice 1</h3>
+        <div id="invoice1" class="invoice-content"></div>
+      </div>
+      <div class="invoice-column">
+        <h3>Recent Invoice 2</h3>
+        <div id="invoice2" class="invoice-content"></div>
+      </div>
+      <div class="history-column">
+        <h3>Customer History</h3>
+        <div id="history" class="history-content"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="aiInsightsSection" style="display: none;">
+    <h2>🤖 AI Customer Insights</h2>
+    <div id="aiInsights" class="ai-insights-full-width">
+      <div id="aiInsightsContent" class="ai-insights-formatted"></div>
+    </div>
   </section>
   
   <section class="card">
     <h2>Add to Invoice</h2>
-    <div class="meta">Select up to 3 products the customer is currently purchasing.</div>
-    <div id="invoicePicker" class="invoice-grid"></div>
+    <div class="meta">Select up to 3 products the customer is adding to their order.</div>
+    <div id="invoicePicker" class="dropdown-container">
+      <div class="dropdown-group">
+        <label for="product1">Product 1:</label>
+        <select id="product1">
+          <option value="">Select a product...</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <label for="product2">Product 2:</label>
+        <select id="product2">
+          <option value="">Select a product...</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <label for="product3">Product 3:</label>
+        <select id="product3">
+          <option value="">Select a product...</option>
+        </select>
+      </div>
+    </div>
     <div id="invoiceMeta" class="meta">0 / 3 selected</div>
+    <div id="aiExplanation" class="ai-recommendation-section" style="display: none;">
+      <h3>💡 Why These Add-Ons?</h3>
+      <p>Artificial Intelligence provides your sales team with reasons to suggest these add-ons to the customer.</p>
+      <div id="aiExplanationContent" class="recommendation-cards"></div>
+    </div>
     <div class="button-container">
-      <button id="suggestBtn">Get Suggestions</button>
+      <button id="suggestBtn">Add to Order</button>
     </div>
   </section>
   
-  <section class="card">
+  <section class="card" id="suggestionsSection" style="display: none;">
     <h2>Suggested Add-Ons</h2>
-    <div id="suggestionsGrid" class="cols"></div>
+    <p>Based on trained machine-learning data from previous customers, we suggest the following add-ons.</p>
+    <div id="suggestionsGrid" class="three-column-row">
+      <div class="suggestion-column">
+        <h3 id="product1Title">Product 1 Add-Ons</h3>
+        <div id="product1Suggestions" class="suggestion-content"></div>
+      </div>
+      <div class="suggestion-column">
+        <h3 id="product2Title">Product 2 Add-Ons</h3>
+        <div id="product2Suggestions" class="suggestion-content"></div>
+      </div>
+      <div class="suggestion-column">
+        <h3 id="product3Title">Product 3 Add-Ons</h3>
+        <div id="product3Suggestions" class="suggestion-content"></div>
+      </div>
+    </div>
   </section>
   
   <section class="card">
@@ -64,10 +124,6 @@
     <div id="additionalGrid" class="cols"></div>
   </section>
   
-  <section class="card">
-    <h2>Customer History</h2>
-    <div id="history"></div>
-  </section>
 </main>
 
   <footer class="footer">

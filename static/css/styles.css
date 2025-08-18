@@ -302,6 +302,39 @@
     gap: 12px;
     margin-top: 12px;
   }
+
+  /* Dropdown Container */
+  .dropdown-container {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 12px;
+  }
+
+  .dropdown-group {
+    margin-bottom: 16px;
+  }
+
+  .dropdown-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .dropdown-group select {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .dropdown-group select:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  .dropdown-group select option:disabled {
+    color: #6c757d;
+    background-color: #f8f9fa;
+  }
   
   .invoice-item {
     background: white;
@@ -367,19 +400,269 @@
     font-size: 12px;
   }
   
-  /* Customer Details Styling */
-  #customerDetails {
+  /* Customer Row Layout */
+  .customer-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .customer-select-container {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    min-height: 120px;
+  }
+
+  .customer-details-container {
+    flex: 1;
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 120px;
+  }
+
+  .customer-details-container strong {
+    color: var(--lowes-blue);
+    font-size: 16px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  /* Three Column Row Layout */
+  .three-column-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .invoice-column, .history-column, .suggestion-column {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .invoice-column h3, .history-column h3, .suggestion-column h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--lowes-blue);
+    font-weight: 600;
+  }
+
+  .invoice-content {
+    min-height: 200px;
+  }
+
+  .history-content {
+    min-height: 200px;
+  }
+
+  .suggestion-content {
+    min-height: 200px;
+  }
+
+  .suggestion-item {
+    background: #f8fafc;
+    border-radius: 0.375rem;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--lowes-green);
+  }
+
+  .suggestion-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .suggestion-item h4 {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--lowes-blue);
+  }
+
+  .suggestion-item .suggestion-meta {
+    font-size: 11px;
+    color: var(--lowes-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .suggestion-item .score-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: #e2e8f0;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+
+  .suggestion-item .score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lowes-green), var(--lowes-light-blue));
+    transition: width 400ms ease;
+  }
+
+  .history-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .history-content li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: var(--lowes-gray);
+  }
+
+  .history-content li:last-child {
+    border-bottom: none;
+  }
+
+  /* AI Components */
+  .ai-insights-full-width {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #0ea5e9;
+    border-radius: 0.75rem;
+    padding: 24px;
+    margin-top: 8px;
+  }
+
+  .ai-insights-formatted {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .ai-insight-card {
     background: white;
     border-radius: 0.5rem;
     padding: 16px;
-    border: none;
+    border-left: 4px solid var(--lowes-light-blue);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-top: 12px;
   }
-  
-  #customerDetails strong {
+
+  .ai-insight-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 700;
     color: var(--lowes-blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ai-insight-card .insight-icon {
     font-size: 16px;
+  }
+
+  .ai-insight-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--lowes-dark-gray);
+  }
+
+  .ai-insight-card.preferences {
+    border-left-color: #10b981;
+  }
+
+  .ai-insight-card.needs {
+    border-left-color: #f59e0b;
+  }
+
+  .ai-insight-card.behavior {
+    border-left-color: #8b5cf6;
+  }
+
+  .ai-recommendation-section {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 1px solid var(--lowes-green);
+    border-radius: 0.75rem;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .ai-recommendation-section h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--lowes-blue);
+  }
+
+  .recommendation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .recommendation-card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 14px;
+    border-left: 4px solid var(--lowes-green);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .recommendation-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--lowes-blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .recommendation-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--lowes-dark-gray);
+  }
+
+  .recommendation-card .value-prop {
+    color: var(--lowes-green);
+    font-weight: 600;
+  }
+
+  .ai-content {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--lowes-dark-gray);
+  }
+
+  .ai-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--lowes-gray);
+    font-style: italic;
+  }
+
+  .ai-loading::before {
+    content: "⏳";
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .ai-error {
+    color: #dc2626;
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
   
   /* Invoice Meta */
@@ -393,29 +676,6 @@
     margin-top: 12px;
   }
   
-  /* History List */
-  #history {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-top: 8px;
-  }
-  
-  #history ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  #history li {
-    padding: 12px 0;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  
-  #history li:last-child {
-    border-bottom: none;
-  }
   
   /* Responsive Design - iPad and Mobile */
   
@@ -460,6 +720,26 @@
     
     .invoice-grid {
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    /* Tablet three column row - stack third column below first two */
+    .three-column-row {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 
+        "invoice1 invoice2"
+        "history history";
+    }
+    
+    .invoice-column:first-child {
+      grid-area: invoice1;
+    }
+    
+    .invoice-column:last-of-type {
+      grid-area: invoice2;
+    }
+    
+    .history-column {
+      grid-area: history;
     }
   }
   
@@ -530,6 +810,43 @@
       margin-right: 0;
       margin-bottom: 8px;
     }
+    
+    /* Mobile customer row */
+    .customer-row {
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .customer-select-container {
+      flex: none;
+    }
+    
+    /* Mobile three column row */
+    .three-column-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    /* Mobile AI insights */
+    .ai-insights-formatted {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .ai-insights-full-width {
+      padding: 16px;
+    }
+    
+    /* Mobile recommendation cards */
+    .recommendation-cards {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    .ai-recommendation-section {
+      padding: 16px;
+      margin: 12px 0;
+    }
   }
   
   /* Large Desktop (1200px+) */
@@ -540,16 +857,17 @@
       gap: 24px;
       grid-template-areas: 
         "customer customer"
-        "invoices invoices"
+        "overview overview"
+        "insights insights"
         "picker picker"
-        "suggestions additional"
-        "history history";
+        "suggestions suggestions"
+        "additional additional";
     }
     
     .card:nth-child(1) { grid-area: customer; }
-    .card:nth-child(2) { grid-area: invoices; }
-    .card:nth-child(3) { grid-area: picker; }
-    .card:nth-child(4) { grid-area: suggestions; }
-    .card:nth-child(5) { grid-area: additional; }
-    .card:nth-child(6) { grid-area: history; }
+    .card:nth-child(2) { grid-area: overview; }
+    .card:nth-child(3) { grid-area: insights; }
+    .card:nth-child(4) { grid-area: picker; }
+    .card:nth-child(5) { grid-area: suggestions; }
+    .card:nth-child(6) { grid-area: additional; }
   }
